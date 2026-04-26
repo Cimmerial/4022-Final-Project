@@ -1,0 +1,154 @@
+GMM confidence run — formatted highlights
+(same run as raw_*_data.txt line 2; column names from line 1)
+
+1. Run identity
+   id: 712
+   strategy_name: gap_fade
+   run_date: 2026-04-22 00:34:36
+   mode: backtest
+
+2. Test window and capital
+   start_date: 2025-03-04  end_date: 2026-03-04
+   train_start: 2022-03-03  train_end: 2025-03-03
+   test_start: 2025-03-04  test_end: 2026-03-04
+   starting_capital: 10000  ending_capital: 7057.740
+
+3. Results summary
+   total_pnl: -2942.260
+   return_pct: -29.423
+   total_trades: 252  total_opportunities: 503  unchosen_trades: 251
+   win_rate: 0.451
+   sharpe_ratio: -2.181  sortino_ratio: -3.669  max_drawdown: 0.307
+   profit_factor: 0.684  win_loss_ratio: 0.832
+   duration_seconds: 7.913
+
+4. Exit mix (exit_counts JSON)
+{
+  "TARGET_HIT": 104,
+  "STOP_HIT": 29,
+  "EOD": 62,
+  "TRAILING_STOP": 0,
+  "TRAILING_TARGET": 0
+}
+
+5. Per-symbol performance (stock_performance)
+[
+  {
+    "symbol": "ROST",
+    "trades": 66,
+    "win_rate": 0.48484848484848486,
+    "total_pnl": -289.653400000007,
+    "avg_pnl": -4.3886878787879855,
+    "avg_return_pct": -0.0005170834969521203,
+    "avg_gap": 0.05659441439730987,
+    "avg_target": 0.8562165890314246,
+    "avg_stop": 2.000000000000001,
+    "avg_conf": 0.9165663800898453
+  },
+  {
+    "symbol": "CRM",
+    "trades": 129,
+    "win_rate": 0.43410852713178294,
+    "total_pnl": -2652.606700000004,
+    "avg_pnl": -20.562842635658946,
+    "avg_return_pct": -0.002337515486913195,
+    "avg_gap": -0.1898302340900223,
+    "avg_target": 1.5784115243747363,
+    "avg_stop": 2.0000000000000013,
+    "avg_conf": 0.7878404842488244
+  }
+]
+
+6. NOBEC confidence (from config_snapshot JSON)
+pre_trade (NOBEC) — confidence-related:
+{
+  "confidence_method": "gmm",
+  "confidence_model_settings": {
+    "gmm": {
+      "min_train_samples": 30,
+      "max_train_samples": 250,
+      "n_components": 2
+    }
+  },
+  "model_influence_direction": true,
+  "symbol_pool": [
+    "CRM",
+    "ROST"
+  ]
+}
+
+config_snapshot prefix (first ~1800 chars)
+{"mode": "backtest", "active_strategies": ["gap_fade"], "primed_strategies": [], "allocation_method": "equal", "manual_allocation": {"gap_fade": 1.0}, "regime_detection": {"enabled": false, "lookback_days": 30, "update_frequency": "daily", "regime_mapping": {}}, "regime_based_test_override": {"enabled": true, "test_start": "2025-03-04", "test_end": "2026-03-04"}, "global_overrides": {"num_workers": 6, "mode": "backtest", "starting_capital": 10000.0, "risk_per_trade_pct": 0.03, "max_trades_per_day": 1, "capital_allocation_pct": 1.0, "slippage_per_share": 0.04, "commission_per_trade": 0.0}, "optimization": {"method": "none", "bayesian_config": {"n_calls": 50, "n_random_starts": 20, "n_initial_points": 25, "early_stopping_patience": 15, "min_improvement": 0.002, "acq_func": "EI", "acq_optimizer": "auto", "random_state": 42, "verbose": false}, "random_config": {"n_iterations": 30}}, "walking_training": {"enabled": false, "mode": "quarterly", "use_training_window_override": false, "training_window_months": 36, "retrain_frequency": "quarterly", "cache_walking_optimizations": true, "fallback_on_failure": true, "verbose": true}, "visuals": {"all_trades_list": true, "per_stock_analysis": true, "equity_curve": true, "temporal_performance": true, "confidence_deciles": true, "gap_deciles": true, "volume_deciles": true, "confusion_matrix": true, "stock_ranking": false, "win_loss_comparison": false, "time_of_day_analysis": true, "comprehensive_summary": true, "regime_performance": true, "optimization_params": true, "train_vs_test": true}, "strategies": {"gap_fade": {"stock_list": ["CRM", "ROST"], "training_window_months": 36, "training_end_offset_days": 1, "train_start": "2022-03-03", "train_end": "2025-03-03", "test_start": "2025-03-04", "test_end": "2026-03-04", "gap_thresholds": [
+... total chars=16863
+
+7. rejection_analysis (pretty or truncated)
+{
+  "total_rejected": 251,
+  "reasons": {
+    "Better option available (more confidence)": 251
+  },
+  "margins": {
+    "Better option available (more confidence)": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+... (1232 more lines)
+
+8. daily_stats (truncated JSON)
+{
+  "2025-03-04": {
+    "CRM": {
+      "gap_pct": -1.0543915921654183,
+      "confidence": 0.5,
+      "volume_ratio": 0.5889294567253541,
+      "relative_strength": -0.32320216787006883,
+      "status": "taken",
+      "rejection_reason": null
+    },
+    "ROST": {
+      "gap_pct": 0.0,
+      "confidence": 0.5,
+      "volume_ratio": 3.2380195196841757,
+      "relative_strength": 0.7311894242953494,
+      "status": "rejected",
+      "rejection_reason": "Better option available (more confidence)"
+    }
+  },
+  "2025-03-05": {
+    "CRM": {
+      "gap_pct": 0.06090345931649314,
+      "confidence": 0.5,
+      "volume_ratio": 0.41338624860912315,
+      "relative_strength": 0.0903723263252227,
+... (4505 more lines)
+
+9. Other DB columns (short)
+   profile_id: null
+   strategy_portfolio_id: null
+   is_live: F
+   stock_optimization_results: {"gap_fade": {"mode": "static", "stocks": [{"symbol": "CRM", "optimized_params": {"gap_threshold": 1.5, "target_fill": 2.0}, "train_metrics": {"note": "optimization_disabled", "train_trades": 0, "train_win_rate": 0.0, "train_pnl": 0.0}, "cached": false}, {"symbol": "ROST", "optimized_params": {"gap_threshold": 1.5, "target_fill": 2.0}, "train_metrics": {"note": "optimization_disabled", "train_trad...
